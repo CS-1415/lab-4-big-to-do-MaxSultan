@@ -1,8 +1,10 @@
 ﻿// Max Sultan, Feb 11th 2026, Lab 4: The Big Todo
 
-class Task
+using System.Runtime.CompilerServices;
+
+class Task(string Title)
 {
-    public string Title; 
+    public string Title = Title; 
     public CompletionStatus Status = CompletionStatus.InProgess;
 
     public void ToggleStatus()
@@ -12,30 +14,76 @@ class Task
 }
 class TodoList
 {
-    private Task[] tasks = [];
-    public int Length = 0;
-    public Task CurrentTask;
+    private static readonly List<Task> tasks = [new Task("Laundry"), new Task("Homework")];
+    public int Length = tasks.Count;
+
+    private static int currentIndex = 0;
+    public Task? CurrentTask = tasks[currentIndex];
 
     public Task? GetTask(int index)
     {
-        if (index > tasks.Length) return null;
+        if (index >= tasks.Count) return null;
         return tasks[index];
     }
 
-    public void SelectPrevious(){}
-    public void SelectNext(){}
+    public void SelectPrevious()
+    {
+        if(tasks.Count < 2) return; 
+        currentIndex = currentIndex - 1 >= 0 ? currentIndex - 1 : tasks.Count - 1; 
+        CurrentTask = tasks[currentIndex];
+    }
+    public void SelectNext()
+    {
+        if(tasks.Count < 2) return;
+        currentIndex = currentIndex + 1 < Length ? currentIndex + 1 : 0;
+        CurrentTask = tasks[currentIndex];
+    }
                     
-    public void SwapWithNext(){}
+    public void SwapWithNext()
+    {
+        if(CurrentTask == null) return;
+        int nextValidIndex = currentIndex + 1 < Length ? currentIndex + 1 : 0;
+        tasks.Remove(CurrentTask);
+        tasks.Insert(nextValidIndex, CurrentTask);
+        currentIndex = nextValidIndex;
+    }
 
-    public void SwapWithPrevious(){}
-    public void Insert(string title){}
-    public void DeleteSelected(){}
+    public void SwapWithPrevious()
+    {
+        if(CurrentTask == null) return;
+        int previousValidIndex = currentIndex - 1 >= 0 ? currentIndex - 1 : tasks.Count - 1; 
+        tasks.Remove(CurrentTask);
+        tasks.Insert(previousValidIndex, CurrentTask);
+        currentIndex = previousValidIndex;
+    }
+    public void Insert(string title)
+    {
+        if(title == "" || title == null) return;
+        tasks.Add(new Task(title));
+        currentIndex = 0;
+        CurrentTask = tasks[currentIndex];
+        Length = tasks.Count;
+    }
+    public void DeleteSelected()
+    {
+        if(CurrentTask == null) return;
+        tasks.RemoveAt(currentIndex);
+        if(tasks.Count == 0)
+        {
+            CurrentTask = null;
+            Length = tasks.Count;
+            return;
+        }
+        currentIndex = currentIndex - 1 >= 0 ? currentIndex - 1 : 0; 
+        CurrentTask = tasks[currentIndex];
+        Length = tasks.Count;
+    }
 
 }
 class TodoListApp {
     private TodoList _tasks;
     private bool _showHelp = true;
-    private bool _insertMode = true;
+    private bool _insertMode = false;
     private bool _quit = false;
 
     public TodoListApp(TodoList tasks) {
@@ -63,6 +111,7 @@ class TodoListApp {
 
     public string MakeRow(int i) {
         Task task = _tasks.GetTask(i);
+        if(task == null) return "";
         string arrow = "  ";
         if (task == _tasks.CurrentTask) arrow = "->";
         string check = " ";
@@ -74,7 +123,7 @@ class TodoListApp {
         DisplayBar();
         Console.WriteLine("Tasks:");
         for (int i = 0; i < _tasks.Length; i++) {
-            Console.WriteLine(MakeRow(i));
+            if(MakeRow(i) != "") Console.WriteLine(MakeRow(i));
         }
         DisplayBar();
     }
@@ -100,7 +149,7 @@ class TodoListApp {
     public void ProcessUserInput() {
         if (_insertMode) {
             string taskTitle = GetTitle();
-            if (taskTitle.Length == 0) {
+            if (taskTitle == null || taskTitle.Length == 0) {
                 _insertMode = false;
             } else {
                 _tasks.Insert(taskTitle);
@@ -126,14 +175,14 @@ class TodoListApp {
                     _insertMode = true;
                     break;
                 case ConsoleKey.E:
-                    _tasks.CurrentTask.Title = GetTitle();
+                    if(_tasks.CurrentTask != null ) _tasks.CurrentTask.Title = GetTitle();
                     break;
                 case ConsoleKey.H:
                     _showHelp = !_showHelp;
                     break;
                 case ConsoleKey.Enter:
                 case ConsoleKey.Spacebar:
-                    _tasks.CurrentTask.ToggleStatus();
+                    _tasks.CurrentTask?.ToggleStatus();
                     break;
                 case ConsoleKey.Delete:
                 case ConsoleKey.Backspace:
