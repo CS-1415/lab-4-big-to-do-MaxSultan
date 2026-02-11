@@ -1,0 +1,15 @@
+/Users/maxwellsultan/snow_college_programming/OOP-Spring-2026/lab-4-big-to-do-MaxSultan/obj/Debug/net8.0/lab-4-big-to-do-MaxSultan.GeneratedMSBuildEditorConfig.editorconfig
+/Users/maxwellsultan/snow_college_programming/OOP-Spring-2026/lab-4-big-to-do-MaxSultan/obj/Debug/net8.0/lab-4-big-to-do-MaxSultan.AssemblyInfoInputs.cache
+/Users/maxwellsultan/snow_college_programming/OOP-Spring-2026/lab-4-big-to-do-MaxSultan/obj/Debug/net8.0/lab-4-big-to-do-MaxSultan.AssemblyInfo.cs
+/Users/maxwellsultan/snow_college_programming/OOP-Spring-2026/lab-4-big-to-do-MaxSultan/obj/Debug/net8.0/lab-4-big-to-do-MaxSultan.csproj.CoreCompileInputs.cache
+/Users/maxwellsultan/snow_college_programming/OOP-Spring-2026/lab-4-big-to-do-MaxSultan/obj/Debug/net8.0/lab-4-big-to-do-MaxSultan.sourcelink.json
+/Users/maxwellsultan/snow_college_programming/OOP-Spring-2026/lab-4-big-to-do-MaxSultan/bin/Debug/net8.0/lab-4-big-to-do-MaxSultan
+/Users/maxwellsultan/snow_college_programming/OOP-Spring-2026/lab-4-big-to-do-MaxSultan/bin/Debug/net8.0/lab-4-big-to-do-MaxSultan.deps.json
+/Users/maxwellsultan/snow_college_programming/OOP-Spring-2026/lab-4-big-to-do-MaxSultan/bin/Debug/net8.0/lab-4-big-to-do-MaxSultan.runtimeconfig.json
+/Users/maxwellsultan/snow_college_programming/OOP-Spring-2026/lab-4-big-to-do-MaxSultan/bin/Debug/net8.0/lab-4-big-to-do-MaxSultan.dll
+/Users/maxwellsultan/snow_college_programming/OOP-Spring-2026/lab-4-big-to-do-MaxSultan/bin/Debug/net8.0/lab-4-big-to-do-MaxSultan.pdb
+/Users/maxwellsultan/snow_college_programming/OOP-Spring-2026/lab-4-big-to-do-MaxSultan/obj/Debug/net8.0/lab-4-big-to-do-MaxSultan.dll
+/Users/maxwellsultan/snow_college_programming/OOP-Spring-2026/lab-4-big-to-do-MaxSultan/obj/Debug/net8.0/refint/lab-4-big-to-do-MaxSultan.dll
+/Users/maxwellsultan/snow_college_programming/OOP-Spring-2026/lab-4-big-to-do-MaxSultan/obj/Debug/net8.0/lab-4-big-to-do-MaxSultan.pdb
+/Users/maxwellsultan/snow_college_programming/OOP-Spring-2026/lab-4-big-to-do-MaxSultan/obj/Debug/net8.0/lab-4-big-to-do-MaxSultan.genruntimeconfig.cache
+/Users/maxwellsultan/snow_college_programming/OOP-Spring-2026/lab-4-big-to-do-MaxSultan/obj/Debug/net8.0/ref/lab-4-big-to-do-MaxSultan.dll
